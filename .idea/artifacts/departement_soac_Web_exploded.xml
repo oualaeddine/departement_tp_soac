@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="departement_soac:Web exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/departement_soac_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="departement_soac/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="departement_soac" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="jstl-1.2.jar" module-name="departement_soac" />
+          <element id="library" level="project" name="lib" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
