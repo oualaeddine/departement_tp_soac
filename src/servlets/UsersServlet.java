@@ -1,6 +1,8 @@
 package servlets;
 
-import soac.miniprojet.api.EmployeesApi;
+import api.EmployeesApi;
+import model.beans.Employees;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,7 @@ public class UsersServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		LinkedList<EmployeesHomeStub.Employees> users = new EmployeesApi().getEmployees();
+		LinkedList<Employees> users = new EmployeesApi().getAll();
 		request.setAttribute("users",users);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/app_views/Users.jsp").forward(request, response);
 	}
@@ -40,4 +42,28 @@ public class UsersServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	@Override
+	protected long getLastModified(HttpServletRequest req) {
+				return super.getLastModified(req);
+	}
+
+	@Override
+	protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		super.doPut(req, resp);
+		String id = req.getParameter("id");
+		new EmployeesApi().getById(Integer.parseInt(id));
+		doGet(req,resp);
+
+
+	}
+
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String id = req.getParameter("id");
+		new EmployeesApi().deleteById(Integer.parseInt(id));
+
+		super.doDelete(req, resp);
+
+
+	}
 }

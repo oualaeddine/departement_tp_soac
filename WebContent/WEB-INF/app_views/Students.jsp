@@ -1,5 +1,5 @@
-<%@ page import="model.dao.StudentsHomeStub" %>
 <%@ page import="java.util.LinkedList" %>
+<%@ page import="model.beans.Students" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%><!DOCTYPE html>
 <html>
@@ -78,8 +78,8 @@
                                         </thead>
                                         <tbody>
                                         <%
-                                            LinkedList<StudentsHomeStub.Students> studs = (LinkedList<StudentsHomeStub.Students>) request.getAttribute("students");
-                                            for (StudentsHomeStub.Students student : studs) {
+                                            LinkedList<Students> studs = (LinkedList<Students>) request.getAttribute("students");
+                                            for (Students student : studs) {
                                         %>
                                         <tr>
                                             <td><%= student.getId()%>

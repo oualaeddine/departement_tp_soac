@@ -19,7 +19,7 @@ public class StudensApi {
     }
 
 
-    public boolean deleteById(int id, String employees) {
+    public boolean deleteById(int id) {
 
         return  dao.deleteById(id,"Students");
     }
@@ -46,4 +46,6 @@ public class StudensApi {
         return dao.countAll();
 
     }
+
+
 }

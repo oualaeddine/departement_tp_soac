@@ -47,7 +47,10 @@ public class InscriptionsServlet extends HttpServlet {
 				doGet(request, response);
 				break;
 			}
+		}
 		doGet(request, response);
 	}
+	
+	
 
 }

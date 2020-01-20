@@ -40,21 +40,10 @@ public class ReinscriptionsServlet extends HttpServlet {
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        switch (request.getParameter("action")) {
-            case "add": {
-                doGet(request, response);
-                break;
-            }
-            case "edit": {
-                doGet(request, response);
-                break;
-            }
-            case "delete": {
-                doGet(request, response);
-                break;
-            }
-        doGet(request, response);
-    }
+        String  id = request.getParameter("id");
+        String niveau = request.getParameter("niveau");
+        new StudensApi().
+
 
 }
 }
