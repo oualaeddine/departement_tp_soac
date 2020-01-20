@@ -6,7 +6,7 @@ public interface DAOInterface {
 
     Object getById(int id);
 
-    boolean deleteById(int id);
+    boolean deleteById(int id, String employees);
 
     boolean update(Object object);
 

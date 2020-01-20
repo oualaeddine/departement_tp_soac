@@ -1,6 +1,8 @@
 package servlets;
 
-import soac.miniprojet.api.StudensApi;
+import api.StudensApi;
+import model.beans.Students;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,6 +16,7 @@ import java.util.LinkedList;
  */
 public class StudentsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
+    private final StudensApi api;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -21,6 +24,7 @@ public class StudentsServlet extends HttpServlet {
     public StudentsServlet() {
         super();
         // TODO Auto-generated constructor stub
+       this.api= new StudensApi();
     }
 
     /**
@@ -28,7 +32,7 @@ public class StudentsServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        LinkedList<StudentsHomeStub.Students> students = new StudensApi().getStudents();
+        LinkedList<Students> students = new StudensApi().getAll();
         request.setAttribute("students", students);
         this.getServletContext().getRequestDispatcher("/WEB-INF/app_views/Students.jsp").forward(request, response);
     }
@@ -38,8 +42,28 @@ public class StudentsServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
-        doGet(request, response);
+        String nom = request.getParameter("nom");
+
+        Students s = new Students();
+        s.setNom(nom);
+
+
+        api.add(s);
+
+            doGet(request, response);
+        }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doPut(req, resp);
     }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super.doDelete(req, resp);
+    }
+
+
+
 
 }

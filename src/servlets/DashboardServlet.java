@@ -34,15 +34,15 @@ public class DashboardServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         switch (request.getParameter("action")) {
-            case "start_inscriptions": {
+            case "add": {
                 doGet(request, response);
                 break;
             }
-            case "end_inscriptions": {
+            case "edit": {
                 doGet(request, response);
                 break;
             }
-            case "edit_inscriptions": {
+            case "delete": {
                 doGet(request, response);
                 break;
             }

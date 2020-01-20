@@ -1,4 +1,4 @@
-<%@ page import="soac.miniprojet.model.dao.StudentsHomeStub" %>
+<%@ page import="model.dao.StudentsHomeStub" %>
 <%@ page import="java.util.LinkedList" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%><!DOCTYPE html>

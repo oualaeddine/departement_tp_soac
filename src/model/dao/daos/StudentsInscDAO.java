@@ -20,7 +20,7 @@ public class StudentsInscDAO extends DAO implements DAOInterface {
     }
 
     @Override
-    public boolean deleteById(int id) {
+    public boolean deleteById(int id, String employees) {
         return deleteById(id, "students_biblio_insc");
     }
 

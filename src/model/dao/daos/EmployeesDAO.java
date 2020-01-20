@@ -1,9 +1,10 @@
 package model.dao.daos;
 
 
-import soac.miniprojet.model.beans.Employees;
-import soac.miniprojet.model.dao.DAO;
-import soac.miniprojet.model.dao.DAOInterface;
+import model.beans.Employees;
+import model.dao.DAO;
+import model.dao.DAOInterface;
+
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -51,7 +52,7 @@ public class EmployeesDAO extends DAO implements DAOInterface {
 
 
     @Override
-    public boolean deleteById(int id) {
+    public boolean deleteById(int id, String employees) {
         return deleteById(id, "Employees");
     }
 
