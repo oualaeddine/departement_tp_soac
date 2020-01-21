@@ -29,7 +29,7 @@ public class DbConnector {
 
     public static void createConnexion() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             if (connexion == null)
                 connexion = DriverManager.getConnection(conn, user, pass);
 

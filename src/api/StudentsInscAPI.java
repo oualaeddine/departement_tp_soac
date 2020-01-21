@@ -23,8 +23,8 @@ public class StudentsInscAPI {
     }
 
 
-    public boolean deleteById(int id, String employees) {
-        return dao.deleteById(id, "students_biblio_insc");
+    public boolean deleteById(int id) {
+        return dao.deleteById(id);
     }
 
 

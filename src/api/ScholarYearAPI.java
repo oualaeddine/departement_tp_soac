@@ -19,8 +19,8 @@ public class ScholarYearAPI  {
 	}
 
 
-	public boolean deleteById(int id, String employees) {
-		return dao.deleteById(id,employees);
+	public boolean deleteById(int id) {
+		return dao.deleteById(id);
 	}
 
 

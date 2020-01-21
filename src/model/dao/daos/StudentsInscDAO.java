@@ -1,7 +1,7 @@
 package model.dao.daos;
 // Generated 7 janv. 2020 11:56:55 by Hibernate Tools 5.4.7.Final
 
-import model.beans.ScholarYear;
+import model.beans.InscriptionPeriod;
 import model.beans.StudentInscription;
 import model.beans.Students;
 import model.dao.DAO;
@@ -20,7 +20,7 @@ public class StudentsInscDAO extends DAO implements DAOInterface {
     }
 
     @Override
-    public boolean deleteById(int id, String employees) {
+    public boolean deleteById(int id) {
         return deleteById(id, "students_biblio_insc");
     }
 
@@ -35,7 +35,7 @@ public class StudentsInscDAO extends DAO implements DAOInterface {
         try {
             statement.execute("INSERT INTO students_biblio_insc (`student_id`,`scholar_year_id`,`date_insc` ) VALUES(" +
                     "'" + studentsInsc.getStudent().getId() + "'," +
-                    "'" + studentsInsc.getScholarYear().getId() + "'," +
+                    "'" + studentsInsc.getInscPeriod().getId() + "'," +
                     "'" + studentsInsc.getDateInsc() + "'" + "," +
                     ");");
             return true;
@@ -54,7 +54,7 @@ public class StudentsInscDAO extends DAO implements DAOInterface {
             while (result.next()) {
 				StudentInscription studentsInsc = new StudentInscription();
 				studentsInsc.setDateInsc(result.getDate("id"));
-				studentsInsc.setScholarYear((ScholarYear) new ScholarYearDAO().getById(result.getInt("scholar_year_id")));
+				studentsInsc.setInscriptionPeriod((InscriptionPeriod) new InscriptionPeriodDAO().getById(result.getInt("insc_period_id")));
 				studentsInsc.setStudent((Students) new StudentsDAO().getById(result.getInt("student_id")));
 				list.add(studentsInsc);
             }

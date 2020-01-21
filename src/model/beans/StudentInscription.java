@@ -8,44 +8,47 @@ import java.util.Date;
  */
 public class StudentInscription implements java.io.Serializable {
 
-	private Students student;
-	private ScholarYear scholarYear;
-	private Date dateInsc;
+    private Students student;
+    private Date dateInsc;
+    private InscriptionPeriod inscriptionPeriod;
+    private String level;
 
-	public String getLevel() {
-		return level;
+    public StudentInscription() {
+    }
+
+    public Students getStudent() {
+        return student;
+    }
+
+    public void setStudent(Students student) {
+        this.student = student;
+    }
+
+    public Date getDateInsc() {
+        return dateInsc;
+    }
+
+    public void setDateInsc(Date dateInsc) {
+        this.dateInsc = dateInsc;
+    }
+
+    public InscriptionPeriod getInscPeriod() {
+        return this.inscriptionPeriod;
+    }
+
+	public InscriptionPeriod getInscriptionPeriod() {
+		return inscriptionPeriod;
+	}
+
+	public void setInscriptionPeriod(InscriptionPeriod inscriptionPerion) {
+		this.inscriptionPeriod = inscriptionPerion;
 	}
 
 	public void setLevel(String level) {
 		this.level = level;
 	}
 
-	private String level;
-
-	public StudentInscription() {
-	}
-
-	public Students getStudent() {
-		return student;
-	}
-
-	public void setStudent(Students student) {
-		this.student = student;
-	}
-
-	public ScholarYear getScholarYear() {
-		return scholarYear;
-	}
-
-	public void setScholarYear(ScholarYear scholarYear) {
-		this.scholarYear = scholarYear;
-	}
-
-	public Date getDateInsc() {
-		return dateInsc;
-	}
-
-	public void setDateInsc(Date dateInsc) {
-		this.dateInsc = dateInsc;
-	}
+	public String getLevel() {
+        return this.level;
+    }
 }

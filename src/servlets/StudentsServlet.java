@@ -5,6 +5,7 @@ import model.beans.Students;
 
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import java.util.LinkedList;
 /**
  * Servlet implementation class StudentsServlet
  */
+@WebServlet("/students")
 public class StudentsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private final StudentsApi api;
@@ -43,24 +45,26 @@ public class StudentsServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String _id = request.getParameter("id");
+        int id = Integer.parseInt(_id);
         String nom = request.getParameter("nom");
         String  prenom = request.getParameter("prenom");
         String  date_naiss = request.getParameter("date_naiss");
         String  sexe = request.getParameter("sexe");
         String  num_bac = request.getParameter("num_bac");
-        String  date_insc = request.getParameter("date_insc");
 
         Students s = new Students();
+        s.setId(id);
         s.setNom(nom);
         s.setPrenom(prenom);
         s.setDateNaiss(new Date(date_naiss));
         s.setSexe(sexe);
         s.setNumBac(num_bac);
         s.setDateInsc(new Date());
-        api.add(s);
+        api.update(s);
 
-            doGet(request, response);
-        }
+        doGet(request, response);
+    }
 
 
 
@@ -71,8 +75,4 @@ public class StudentsServlet extends HttpServlet {
        api.deleteById(Integer.parseInt(id));
        doGet(req,resp);
     }
-
-
-
-
 }

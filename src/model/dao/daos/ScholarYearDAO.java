@@ -30,6 +30,7 @@ public class ScholarYearDAO extends DAO implements DAOInterface {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return null;
 	}
 
 	@Override
@@ -38,7 +39,7 @@ public class ScholarYearDAO extends DAO implements DAOInterface {
 	}
 
 	@Override
-	public boolean deleteById(int id, String employees) {
+	public boolean deleteById(int id) {
 		return false;
 	}
 

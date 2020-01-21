@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 
 public class EmployeesApi {
+    public EmployeesApi() {
+        this.dao = new EmployeesDAO();
+    }
 
     EmployeesDAO dao;
 
@@ -22,12 +25,11 @@ public class EmployeesApi {
 
 
     public boolean deleteById(int id) {
-        return dao.deleteById(id, "Employees");
+        return dao.deleteById(id);
     }
 
 
     public boolean update(Object object) {
-
         return  dao.update(object);
     }
 

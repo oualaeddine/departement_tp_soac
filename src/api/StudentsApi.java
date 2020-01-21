@@ -22,7 +22,7 @@ public class StudentsApi {
 
     public boolean deleteById(int id) {
 
-        return  dao.deleteById(id,"Students");
+        return  dao.deleteById(id);
     }
 
 
@@ -32,9 +32,9 @@ public class StudentsApi {
     }
 
 
-    public boolean add(Object object) {
+    public boolean add(Students student) {
 
-        return dao.add(object);
+        return dao.add(student);
     }
 
 

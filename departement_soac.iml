@@ -29,7 +29,7 @@
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="inheritedJdk" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library name="jstl-1.2.jar">
         <CLASSES>
           <root url="jar://$MODULE_DIR$/WebContent/lib/jstl-1.2.jar!/" />
@@ -41,11 +41,21 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="file://C:/Program Files/Apache Software Foundation/Tomcat 9.0/lib" />
+          <root url="file://E:/programs/apache-tomcat-9.0.30/lib" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
-        <jarDirectory url="file://C:/Program Files/Apache Software Foundation/Tomcat 9.0/lib" recursive="false" />
+        <jarDirectory url="file://E:/programs/apache-tomcat-9.0.30/lib" recursive="false" />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" exported="">
+      <library>
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/WebContent/WEB-INF/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/WebContent/WEB-INF/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>

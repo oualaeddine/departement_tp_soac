@@ -38,14 +38,10 @@ public class InscriptionPeriodDAO extends DAO implements DAOInterface {
 		return null;    }
 
 	@Override
-	public boolean deleteById(int id, String employees) {
-		return  deleteById(id,"inscription_period");
-	}
-
-	@Override
 	public boolean deleteById(int id) {
 		return  deleteById(id,"inscription_period");
 	}
+
 
 	@Override
 	public boolean update(Object object) {
