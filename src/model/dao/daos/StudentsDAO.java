@@ -1,6 +1,7 @@
 package model.dao.daos;
 // Generated 7 janv. 2020 11:56:55 by Hibernate Tools 5.4.7.Final
 
+import model.beans.ScholarYear;
 import model.beans.StudentInscription;
 import model.beans.Students;
 import model.dao.DAO;
@@ -113,11 +114,14 @@ public class StudentsDAO extends DAO implements DAOInterface {
 	}
 
 	public boolean Reinscrire(StudentInscription studentInscription) {
-		Students student = (Students) object;
+
+
 		try {
-			statement.execute("INSERT INTO student_inscription (`student_id`,`prenom`,`role` ) VALUES(" +
-					"'" + student.getNom() + "'," +
-					"'" + student.getPrenom() + "'," +
+			statement.execute("INSERT INTO student_inscription (`student_id`,`insc_period_id`,`level`,`insc_date` ) VALUES (" +
+					"" + studentInscription.getStudent().getId() + "," +
+					"" + studentInscription.getScholarYear().getId() + "," +
+					"'" + studentInscription.getLevel() +"',"+
+					"now()," +
 					");");
 			return true;
 		} catch (SQLException e) {
@@ -125,4 +129,5 @@ public class StudentsDAO extends DAO implements DAOInterface {
 		}
 		return false;
 	}
+
 }

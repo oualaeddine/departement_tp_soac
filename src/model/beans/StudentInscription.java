@@ -12,6 +12,16 @@ public class StudentInscription implements java.io.Serializable {
 	private ScholarYear scholarYear;
 	private Date dateInsc;
 
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
+	}
+
+	private String level;
+
 	public StudentInscription() {
 	}
 

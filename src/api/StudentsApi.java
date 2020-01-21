@@ -1,5 +1,6 @@
 package api;
 
+import model.beans.StudentInscription;
 import model.beans.Students;
 import model.dao.daos.StudentsDAO;
 
@@ -7,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-public class StudensApi {
+public class StudentsApi {
 
     StudentsDAO dao;
 
@@ -47,5 +48,8 @@ public class StudensApi {
 
     }
 
+    public boolean Reinscrire(StudentInscription studentInscription){
 
+        return dao.Reinscrire(studentInscription);
+    }
 }

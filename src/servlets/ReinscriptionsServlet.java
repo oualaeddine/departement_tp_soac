@@ -1,7 +1,7 @@
 package servlets;
 
 import model.beans.Students;
-import api.StudensApi;
+import api.StudentsApi;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +29,7 @@ public class ReinscriptionsServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-		LinkedList<Students> students=new StudensApi().getAll();
+		LinkedList<Students> students=new StudentsApi().getAll();
 		request.setAttribute("students",students);
 		this.getServletContext().getRequestDispatcher("/WEB-INF/app_views/Students.jsp").forward(request, response);
     }
@@ -42,7 +42,7 @@ public class ReinscriptionsServlet extends HttpServlet {
         // TODO Auto-generated method stub
         String  id = request.getParameter("id");
         String niveau = request.getParameter("niveau");
-        new StudensApi().
+        new StudentsApi().
 
 
 }

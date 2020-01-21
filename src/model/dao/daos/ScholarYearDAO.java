@@ -1,9 +1,12 @@
 package model.dao.daos;
 // Generated 7 janv. 2020 11:56:55 by Hibernate Tools 5.4.7.Final
 
+import model.beans.ScholarYear;
 import model.dao.DAO;
 import model.dao.DAOInterface;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 
 /**
@@ -11,6 +14,23 @@ import java.util.LinkedList;
  */
 public class ScholarYearDAO extends DAO implements DAOInterface {
 
+	public ScholarYear GetLastScholarYear(){
+		try {
+			ResultSet result = statement.executeQuery("SELECT * FROM scholar_year ORDER BY id DESC LIMIT 1;");;
+			if (result.next()) {
+				ScholarYear sy = new ScholarYear();
+				sy.setId(result.getInt("id"));
+				sy.setComments(result.getString("comments"));
+				sy.setStartDate(result.getDate("start_date"));
+				sy.setEndDate(result.getDate("end_date"));
+				return sy;
+			}
+
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 	@Override
 	public Object getById(int id) {

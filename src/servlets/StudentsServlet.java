@@ -1,6 +1,6 @@
 package servlets;
 
-import api.StudensApi;
+import api.StudentsApi;
 import model.beans.Students;
 
 
@@ -17,7 +17,7 @@ import java.util.LinkedList;
  */
 public class StudentsServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private final StudensApi api;
+    private final StudentsApi api;
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -25,7 +25,7 @@ public class StudentsServlet extends HttpServlet {
     public StudentsServlet() {
         super();
         // TODO Auto-generated constructor stub
-       this.api= new StudensApi();
+       this.api= new StudentsApi();
     }
 
     /**
@@ -33,7 +33,7 @@ public class StudentsServlet extends HttpServlet {
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
-        LinkedList<Students> students = new StudensApi().getAll();
+        LinkedList<Students> students = new StudentsApi().getAll();
         request.setAttribute("students", students);
         this.getServletContext().getRequestDispatcher("/WEB-INF/app_views/Students.jsp").forward(request, response);
     }
