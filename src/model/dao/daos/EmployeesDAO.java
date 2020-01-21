@@ -30,6 +30,25 @@ public class EmployeesDAO extends DAO implements DAOInterface {
         }
         return null;
     }
+    public Employees getByUsername(String username) {
+        ResultSet result;
+        try {
+            result = statement.executeQuery("SELECT * FROM Employees WHERE username like'" + username + "'");
+            if (result.next()) {
+                Employees employe = new Employees();
+                employe.setId(result.getInt("id"));
+                employe.setNom(result.getString("nom"));
+                employe.setPrenom(result.getString("prenom"));
+                employe.setRole(result.getString("role"));
+                employe.setUsername(result.getString("username"));
+                employe.setPassword(result.getString("password"));
+                return employe;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     public boolean isAuth(String username, String password) {
         ResultSet result;

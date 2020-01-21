@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class DbConnector {
 
     private static final String
-            db_name = "biblio_soac",
+            db_name = "departement_tp_soac",
             host = "localhost",
             port = "3306",
             user = "root",
