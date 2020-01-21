@@ -4,6 +4,7 @@ import api.InscriptionPeriodAPI;
 import api.ScholarYearAPI;
 import model.beans.InscriptionPeriod;
 import model.beans.ScholarYear;
+import utils.ScholarYearHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -48,54 +49,63 @@ public class DashboardServlet extends HttpServlet {
         String fin = request.getParameter("end");
         switch (request.getParameter("action")) {
             case "add_year": {
-                ScholarYear scholarYear = new ScholarYear();
-                scholarYear.setStartDate(new Date(debut));
-                scholarYear.setEndDate(new Date(fin));
-                yearApi.add(scholarYear);
+                if (!ScholarYearHelper.isYearOpen()) {
+                    ScholarYear scholarYear = new ScholarYear();
+                    scholarYear.setStartDate(new Date(debut));
+                    scholarYear.setEndDate(new Date(fin));
+                    yearApi.add(scholarYear);
+                }
+
                 break;
             }
             case "edit_year": {
-                String _id = request.getParameter("id");
-                int id = Integer.parseInt(_id);
-                ScholarYear scholarYear = new ScholarYear();
-                scholarYear.setId(id);
-                scholarYear.setStartDate(new Date(debut));
-                scholarYear.setEndDate(new Date(fin));
-                yearApi.update(scholarYear);
+                if (ScholarYearHelper.isYearOpen()) {
+                    String _id = request.getParameter("id");
+                    int id = Integer.parseInt(_id);
+                    ScholarYear scholarYear = new ScholarYear();
+                    scholarYear.setId(id);
+                    scholarYear.setStartDate(new Date(debut));
+                    scholarYear.setEndDate(new Date(fin));
+                    yearApi.update(scholarYear);
+                }
                 break;
             }
             case "end_year": {
+                if (ScholarYearHelper.isYearOpen()) {
                 String _id = request.getParameter("id");
                 int id = Integer.parseInt(_id);
                 ScholarYear scholarYear = (ScholarYear) yearApi.getById(id);
                 scholarYear.setEndDate(new Date(fin));
-                yearApi.update(scholarYear);
+                yearApi.update(scholarYear);}
                 break;
             }
             case "add_period": {
-
+                if (!ScholarYearHelper.isInscPeriodOpen()) {
                 InscriptionPeriod period = new InscriptionPeriod();
                 period.setStartInscDate(new Date(debut));
                 period.setEndInscDate(new Date(fin));
-                periodApi.add(period);
+                periodApi.add(period);}
                 break;
             }
             case "edit_period": {
+                if (ScholarYearHelper.isInscPeriodOpen()) {
                 InscriptionPeriod period = new InscriptionPeriod();
                 period.setStartInscDate(new Date(debut));
                 period.setEndInscDate(new Date(fin));
-                periodApi.update(period);
+                periodApi.update(period); }
                 break;
             }
             case "end_period": {
+                if (ScholarYearHelper.isInscPeriodOpen()) {
                 String _id = request.getParameter("id");
                 int id = Integer.parseInt(_id);
                 InscriptionPeriod period = (InscriptionPeriod) yearApi.getById(id);
                 period.setEndInscDate(new Date(fin));
-                yearApi.update(period);
+                yearApi.update(period); }
                 break;
             }
         }
+        doGet(request, response);
     }
 
 }

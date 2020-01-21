@@ -3,6 +3,7 @@ package api;
 import model.beans.StudentInscription;
 import model.beans.Students;
 import model.dao.daos.StudentsDAO;
+import utils.ScholarYearHelper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +23,7 @@ public class StudentsApi {
 
     public boolean deleteById(int id) {
 
-        return  dao.deleteById(id);
+        return dao.deleteById(id);
     }
 
 
@@ -33,8 +34,10 @@ public class StudentsApi {
 
 
     public boolean add(Students student) {
-
-        return dao.add(student);
+        if (ScholarYearHelper.isInscPeriodOpen())
+            return dao.add(student);
+        else
+            return false;
     }
 
 
@@ -42,14 +45,16 @@ public class StudentsApi {
 
         return dao.getAll();
     }
+
     public int countAll() {
 
         return dao.countAll();
 
     }
 
-    public boolean Reinscrire(StudentInscription studentInscription){
-
+    public boolean Reinscrire(StudentInscription studentInscription) {
+        if (ScholarYearHelper.isReInscPeriodOpen())
         return dao.Reinscrire(studentInscription);
+        else return false;
     }
 }
